@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // Importamos componentes visuales:
 import Login from "./views/Login";
+import LoginRedirect from "./views/LoginRedirect";
 import Profile from "./views/Profile";
 import Logout from "./views/Logout";
 import Home from "./views/Home";
@@ -13,6 +14,7 @@ import Posteos from "./views/Posteos";
 import Footer from "./components/Footer/Footer";
 
 import RutaProtected from "./routes/RutaProtected"
+import RutaProtectedRedirect from "./routes/RutaProtectedRedirect"
 
 // Importar contexto
 import { AuthContext, initAutenticacion, initUser } from './context/AuthContext';
@@ -41,6 +43,7 @@ function App() {
             <Navbar auth={auth}/>
           </div>
 
+          {/* 3 - Ruta protegida */}
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
@@ -51,6 +54,18 @@ function App() {
               <Route path='perfil' element={<Profile />} />
             </Route>
           </Routes>
+
+          {/* 4 - Login con redirect basado en la URL */}
+          {/* <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<LoginRedirect />} />
+            <Route path='/logout' element={<Logout />} />
+
+            <Route path='/' element={<RutaProtectedRedirect />}>
+              <Route path='posteos' element={<Posteos />} />
+              <Route path='perfil' element={<Profile />} />
+            </Route>
+          </Routes> */}
 
           <div className="footer-container">
             <Footer />

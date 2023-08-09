@@ -1,5 +1,5 @@
 import styles from "./Login.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useContext } from 'react'
 import { AuthContext } from '../context/AuthContext';
 
@@ -22,6 +22,7 @@ const Login = () => {
   const { setAuth, setUserName } = useContext(AuthContext);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Establecemos la función que guarda los cambios en los datos globales:
   const handleSubmit = (event) => {
@@ -48,7 +49,18 @@ const Login = () => {
     setUserName(username);
     setAuth(true);
 
-    navigate("/posteos");
+    // Definir a dónde deberemos realizar el redirect
+    // 1 - A la página por defecto (home) 
+    // 2 - A la página definida en los query URL parameters
+
+    // Leer los query string en búsqueda del parámetro next
+    const next = new URLSearchParams(location.search).get("next");
+
+    // Si el parámetro next está definido, se hace le redirect allí,
+    // de lo contrario se hace el redirect a "home"
+    const redirectTo = next? next : "/"
+    
+    navigate(redirectTo);
     
   };
 
