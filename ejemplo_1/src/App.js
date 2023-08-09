@@ -47,10 +47,10 @@ function App() {
           <Route path='/login' element={<Login setAuth={setAuth} setUserName={setUserName}/>} />
           <Route path='/logout' element={<Logout setAuth={setAuth} setUserName={setUserName} />} />
           <Route path="/posteos"
-            element={auth ? <Posteos /> : <Navigate to="/login" /> }
+            element={auth ? <Posteos /> : <Navigate to="/login" replace/> }
           />
           <Route path="/perfil"
-            element={auth ? <Profile userName={userName} /> : <Navigate to="/login" /> }
+            element={auth ? <Profile userName={userName} /> : <Navigate to="/login" replace/> }
           />
         </Routes>
 

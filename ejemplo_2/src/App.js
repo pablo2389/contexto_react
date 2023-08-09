@@ -44,10 +44,10 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/logout' element={<Logout />} />
             <Route path="/posteos"
-              element={auth ? <Posteos /> : <Navigate to="/login" /> }
+              element={auth ? <Posteos /> : <Navigate to="/login" replace/> }
             />
             <Route path="/perfil"
-              element={auth ? <Profile /> : <Navigate to="/login" /> }
+              element={auth ? <Profile /> : <Navigate to="/login" replace/> }
             />
           </Routes>
 
