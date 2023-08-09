@@ -48,7 +48,8 @@ const Login = () => {
     setUserName(username);
     setAuth(true);
 
-    navigate("/posteos");
+    // Terminado el login, se realiza el redirect a home
+    navigate("/");
     
   };
 
